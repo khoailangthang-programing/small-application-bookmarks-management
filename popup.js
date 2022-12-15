@@ -14,9 +14,9 @@ inputSearch.addEventListener('keyup', function () {
         let arrFilterVal = arrFilter['val'];
         arrFilterVal = arrFilterVal.toLowerCase();
         if (arrFilterVal.indexOf(thisVal) === -1) {
-            document.getElementById(arrFilter['id']).style.display = 'none';
+            document.getElementById("item-bookmark-" + arrFilter['id']).style.display = 'none';
         } else {
-            document.getElementById(arrFilter['id']).style.display = 'block';
+            document.getElementById("item-bookmark-" + arrFilter['id']).style.display = 'block';
         }
     });
 });
@@ -62,12 +62,9 @@ function process_bookmark(bookmarks) {
             newLink.href = bookmark.url;
             newLink.append(bookmark.title);
 
-            var idItem = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
-
             // create checkbox input to select
             var newCheckbox = document.createElement("input");
             newCheckbox.type = "checkbox";
-            newCheckbox.name = "checked["+idItem+"]";
             newCheckbox.setAttribute("data-remove", bookmark.id);
             newCheckbox.addEventListener("change", function (e) {
                 let itemId = this.getAttribute("data-remove");
@@ -81,7 +78,6 @@ function process_bookmark(bookmarks) {
                 }
             });
 
-            newItem.id = idItem;
             newItem.classList.add("item-bookmark");
             newItem.setAttribute("id", "item-bookmark-" + bookmark.id);
             newItem.append(newCheckbox);
@@ -89,7 +85,7 @@ function process_bookmark(bookmarks) {
             listBookmarks.append(newItem);
 
             var newArr = [];
-            newArr['id'] = idItem;
+            newArr['id'] = bookmark.id;
             newArr['val'] = bookmark.title;
             arrVal.push(newArr);
         }
