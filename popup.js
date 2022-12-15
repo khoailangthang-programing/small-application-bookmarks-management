@@ -71,7 +71,7 @@ function process_bookmark(bookmarks) {
                 if (this.checked) {
                     checkedItems.push(itemId);
                 } else {
-                    let index = array.indexOf(itemId);
+                    let index = checkedItems.indexOf(itemId);
                     if (index > -1) {
                         checkedItems.splice(index, 1);
                     }
