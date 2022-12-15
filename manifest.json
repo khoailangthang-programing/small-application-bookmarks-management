@@ -1,0 +1,13 @@
+{
+    "name": "fast get and search bookmarks",
+    "description": "fast get and search bookmarks",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "bookmarks"],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
